@@ -10,9 +10,8 @@ public class CommandController {
 	createRepository repo = new createRepository();
 	
 	@RequestMapping("/init")
-	public void postrepo() throws IOException{
-		System.out.println("created"+repo.createRepo());
+	public String postrepo() throws IOException{
 		repo.createRepo();
-		return;
+		return "create:"+repo.createRepo();
 	}
 }
