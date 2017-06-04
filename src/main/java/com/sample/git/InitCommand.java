@@ -4,15 +4,14 @@ package com.sample.git;
 import java.io.File;
 import java.io.IOException;
 
-
+import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
-import org.eclipse.jgit.lib.Repository;
+
 
 
 public class InitCommand {
 	
-	public static Repository createRepo() throws IOException, GitAPIException {
+	public static void createRepo() throws IOException, GitAPIException {
 
 		//File localPath = File.createTempFile("TestGitRepository", "");
 		
@@ -22,16 +21,15 @@ public class InitCommand {
      // create the directory
 		//カレントディレクトリを取得
 		String pwd = new File(".").getAbsoluteFile().getParent();
-		String localpath = pwd+"/target/";
+		String localpath = pwd+"/target/test";
 		//リポジトリを生成
-        Repository repository = FileRepositoryBuilder.create(new File(localpath, "/test/.git"));
-        repository.create();
+		try (Git git = Git.init()
+				.setDirectory(new File(localpath))
+				.call()) {
+        System.out.println("Created a new repository at " + git.getRepository().getDirectory());
+        }
 
-        return repository;
 		
 	}
-	public static File repoDir() throws IOException, GitAPIException{
-		System.out.println(createRepo().getDirectory());
-		return createRepo().getDirectory();
-	}
+
 }

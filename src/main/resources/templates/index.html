@@ -4,10 +4,16 @@
     <title>hello git</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta charset="UTF-8" />
+    
 </head>
-<body>
-    <p>
-    	Hello
-    </p>
-</body>
+    <body>
+        <form role="form" action="" method="post">
+            <div>
+                <label for="command">command</label>
+                <input type="text" name="command" id="command" />
+            </div>
+            <button type="submit">submit</button>
+        </form>
+        <p th:text="${command}">${command}</p>
+    </body>
 </html>

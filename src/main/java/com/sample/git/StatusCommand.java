@@ -23,13 +23,13 @@ public class StatusCommand {
 	                statusfiles.add("Untracked: " + status.getUntracked());
 	                */
 	                for(String s: status.getModified())
-	        			System.out.println("modifiedfile: "+s);
+	        			System.out.println("modified: "+s);
 	        		for(String s: status.getChanged())
-	        			System.out.println("changedfile: "+s);
+	        			System.out.println("changed: "+s);
 	        		for(String s: status.getUntracked())
-	        			System.out.println("untrackedfile: "+s);
+	        			System.out.println("untracked: "+s);
 	            	for(String s: status.getAdded())
-	            		System.out.println("addedfile: "+s);
+	            		System.out.println("added: "+s);
                 	}
 	            }
 	        }
